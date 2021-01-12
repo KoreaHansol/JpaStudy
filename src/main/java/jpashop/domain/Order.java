@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "ORDERS") //order by 때문에
+//@Entity
+//@Table(name = "ORDERS") //order by 때문에
 public class Order {
 
     @Id @GeneratedValue
