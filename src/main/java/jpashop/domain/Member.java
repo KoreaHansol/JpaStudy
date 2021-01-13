@@ -1,10 +1,10 @@
 package jpashop.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
+@Entity
 public class Member {
 
     @Id @GeneratedValue
@@ -15,8 +15,19 @@ public class Member {
     private String street;
     private String zipcode;
 
+    @OneToMany(mappedBy = "member") //멤버 하나는 여러개 주문 가능, 그리고 연관관계는 당연히 저쪽에 있는 멤버
+    private List<Order> orderList = new ArrayList<>();
+
     public Long getId() {
         return id;
+    }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 
     public void setId(Long id) {
